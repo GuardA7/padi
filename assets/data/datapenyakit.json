@@ -1,0 +1,32 @@
+{
+  "bacterial_leaf_blight": {
+    "nama": "bacterial leaf blight",
+    "deskripsi": "Bacterial leaf blight disebabkan oleh bakteri (Xanthomonas oryzae) pv. (oryzae) dan merupakan salah satu penyakit paling merusak pada tanaman padi. Gejalanya berupa garis kuning di tepi daun yang cepat meluas menjadi bercak nekrotik berwarna coklat. Penyakit ini umumnya menyebar melalui air hujan, percikan air, serta alat pertanian yang terkontaminasi. Kondisi lembap dan suhu tinggi mempercepat penyebarannya. Jika tidak dikendalikan, penyakit ini dapat menurunkan hasil panen secara signifikan. Pencegahan dapat dilakukan dengan menggunakan varietas tahan penyakit, menjaga sanitasi lahan, serta rotasi tanaman.",
+    "gambar": "assets/data/img/bacterial_leaf_blight.jpg"
+  },
+  "brown_spot": {
+    "nama": "brown spot",
+    "deskripsi": "Brown spot disebabkan oleh jamur (Bipolaris oryzae) dan menyerang daun, batang, serta bulir padi. Gejalanya berupa bercak bundar hingga oval berwarna coklat yang kadang dikelilingi halo kuning. Penyakit ini sering muncul saat musim hujan atau di lahan dengan kesuburan rendah dan kekurangan unsur hara seperti kalium dan silika. Infeksi berat dapat menyebabkan pengurangan kualitas dan kuantitas gabah. Pengendalian mencakup pemupukan berimbang, pengeringan lahan yang baik, serta penggunaan fungisida bila diperlukan.",
+    "gambar": "assets/data/img/brown_spot.jpg"
+  },
+  "healthy": {
+    "nama": "healthy",
+    "deskripsi": "Tanaman padi dalam kondisi sehat menunjukkan pertumbuhan optimal tanpa gejala penyakit atau gangguan fisiologis. Daun berwarna hijau segar, batang kokoh, dan anakan berkembang dengan baik. Tanaman sehat menunjukkan respons baik terhadap pemupukan, irigasi, dan sinar matahari. Keadaan ini dicapai melalui pengelolaan budidaya yang baik, seperti penggunaan benih unggul, pengendalian hama-penyakit secara terpadu, serta pemeliharaan kebersihan lahan.",
+    "gambar": "assets/data/img/healty.jpg"
+  },
+  "leaf_blast": {
+    "nama": "leaf blast",
+    "deskripsi": "Leaf blast disebabkan oleh jamur (Pyricularia oryzae) dan merupakan salah satu penyakit utama pada padi. Gejalanya dimulai dari bercak kecil berbentuk belah ketupat berwarna abu-abu atau putih di tengah dengan tepi coklat. Serangan parah bisa menyebabkan daun kering dan mati. Penyakit ini menyebar cepat pada musim hujan dengan kelembapan tinggi dan suhu hangat. Pengendalian dilakukan dengan varietas tahan blast, jarak tanam ideal, serta pengurangan pemupukan nitrogen berlebih yang memicu pertumbuhan patogen.",
+    "gambar": "assets/data/img/leaf_blast.jpg"
+  },
+  "leaf_scald": {
+    "nama": "leaf scald",
+    "deskripsi": "Leaf scald disebabkan oleh jamur (Microdochium oryzae) dan menyerang bagian tengah daun. Gejalanya berupa bercak lonjong keabu-abuan dengan tepi kecoklatan yang meluas sejajar tulang daun. Dalam kondisi basah dan kelembapan tinggi, penyakit berkembang pesat dan dapat menurunkan efisiensi fotosintesis. Penyebaran terjadi melalui spora yang terbawa angin dan air. Pencegahan dilakukan dengan pemantauan rutin, drainase yang baik, dan penggunaan fungisida bila diperlukan.",
+    "gambar": "assets/data/img/leaf_scald.jpg"
+  },
+  "narrow_brown_spot": {
+    "nama": "narrow brown spot",
+    "deskripsi": "Narrow brown spot disebabkan oleh jamur (Cercospora oryzae). Gejalanya muncul sebagai bercak sempit berwarna coklat gelap yang memanjang mengikuti arah serat daun. Bercak ini sering menyebabkan penurunan kemampuan fotosintesis, terutama jika menyerang daun bendera. Penyakit berkembang pesat di lahan yang kurang sinar matahari dan drainase buruk. Pencegahan dilakukan melalui penanaman varietas tahan, rotasi tanaman, serta pemupukan yang sesuai untuk memperkuat ketahanan tanaman.",
+    "gambar": "assets/data/img/narrow_brown_spot.jpg"
+  }
+}
