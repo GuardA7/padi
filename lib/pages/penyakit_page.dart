@@ -1,94 +1,90 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import '../widgets/custom_bottom_nav.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'detail_penyakit_page.dart';
 
 class PenyakitPage extends StatelessWidget {
   const PenyakitPage({super.key});
 
-  Future<Map<String, dynamic>> loadPenyakitData() async {
-    final String response = await rootBundle.loadString(
-      'assets/data/datapenyakit.json',
-    );
-    final data = json.decode(response);
-    return data;
-  }
+  final List<String> keys = const [
+    'bacterial_leaf_blight',
+    'brown_spot',
+    'healthy',
+    'leaf_blast',
+    'leaf_scald',
+    'narrow_brown_spot',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFAF9F9),
       appBar: AppBar(
-        title: const Text("Data Penyakit"),
+        title: Text('data_penyakit'.tr(), style: const TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
       ),
-      body: FutureBuilder<Map<String, dynamic>>(
-        future: loadPenyakitData(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Terjadi kesalahan: ${snapshot.error}'));
-          }
+      body: ListView.builder(
+        padding: const EdgeInsets.all(16),
+        itemCount: keys.length,
+        itemBuilder: (context, index) {
+          final key = keys[index];
+          final nama = tr('$key.nama');
+          final deskripsi = tr('$key.deskripsi');
+          final gambar = 'assets/data/img/$key.jpg';
 
-          final penyakitData = snapshot.data!;
-          return ListView.builder(
-            padding: const EdgeInsets.all(16),
-            itemCount: penyakitData.length,
-            itemBuilder: (context, index) {
-              String key = penyakitData.keys.elementAt(index);
-              var item = penyakitData[key];
-
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder:
-                          (context) => DetailPenyakitPage(
-                            nama: item['nama'] ?? '-',
-                            deskripsi: item['deskripsi'] ?? '-',
-                            gambar: item['gambar'] ?? '',
-                          ),
-                    ),
-                  );
-                },
-                child: Card(
-                  margin: const EdgeInsets.only(bottom: 16),
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          bottomLeft: Radius.circular(10),
-                        ),
-                        child: Image.asset(
-                          item['gambar'] ?? '',
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Text(
-                          item['nama'] ?? '-',
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailPenyakitPage(
+                    nama: nama,
+                    deskripsi: deskripsi,
+                    gambar: gambar,
                   ),
                 ),
               );
             },
+            child: Card(
+              margin: const EdgeInsets.only(bottom: 16),
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      bottomLeft: Radius.circular(10),
+                    ),
+                    child: Image.asset(
+                      gambar,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          width: 100,
+                          height: 100,
+                          color: Colors.grey.shade300,
+                          child: const Icon(Icons.broken_image, size: 40, color: Colors.grey),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      nama,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           );
         },
       ),

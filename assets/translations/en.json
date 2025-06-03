@@ -2,7 +2,6 @@
     "home_title": "Home",
     "scan_penyakit_padi": "Rice Disease Scan",
     "scan_terakhir": "Last Scan",
-    "kunyit": "Turmeric",
     "setting": "Setting",
     "bahasa": "Language",
     "konfirmasi": "Confirmation",
@@ -16,14 +15,33 @@
     "konfirmasi_hapus": "Are you sure you want to delete this item?",
     "batal": "Cancel",
     "hapus": "Delete",
-    "scan_blast": "Scan for Blast (Neck Rot Disease)",
-    "scan_turgo": "Scan for Tungro",
-    "scan_bercak": "Scan for Brown Leaf Spot (Narrow Brown Spot)",
-    "hawar_daun_bakteri_info": "Bacterial leaf blight is a disease that attacks leaves causing brown spots and tissue damage.",
-    "blast_info": "Blast is a fungal disease affecting rice plants, causing spots on leaves.",
     "unknown_disease_info": "Disease not recognized. Please try another image or contact an expert.",
     "appBarTitle": "Disease Detection Result",
     "detectedDisease": "Detected Disease",
     "finishButton": "Finish",
-    "Penyakit": "Disease"
+    "data_penyakit": "Data Disease",
+    "bacterial_leaf_blight": {
+        "nama": "Bacterial Leaf Blight",
+        "deskripsi": "Bacterial leaf blight is caused by the bacterium (Xanthomonas oryzae) pv. (oryzae) and is one of the most destructive diseases of rice plants. Symptoms include yellow lines at the leaf edges that quickly expand into necrotic brown spots. This disease typically spreads through rainwater, splashes, and contaminated farming tools. Humid conditions and high temperatures accelerate its spread. If not controlled, it can significantly reduce crop yields. Prevention can be done by using disease-resistant varieties, maintaining field sanitation, and practicing crop rotation."
+    },
+    "brown_spot": {
+        "nama": "Brown Spot",
+        "deskripsi": "Brown spot is caused by the fungus (Bipolaris oryzae) and attacks leaves, stems, and rice grains. Symptoms appear as round to oval brown spots sometimes surrounded by a yellow halo. This disease often appears during the rainy season or in fields with low fertility and deficiency of nutrients such as potassium and silica. Severe infection can reduce the quality and quantity of rice grains. Control measures include balanced fertilization, proper field drying, and fungicide application when necessary."
+    },
+    "healthy": {
+        "nama": "Healthy",
+        "deskripsi": "Healthy rice plants show optimal growth without any symptoms of disease or physiological disorders. Leaves are fresh green, stems are sturdy, and tillers develop well. Healthy plants respond well to fertilization, irrigation, and sunlight. This condition is achieved through good cultivation management such as using superior seeds, integrated pest and disease control, and maintaining field cleanliness."
+    },
+    "leaf_blast": {
+        "nama": "Leaf Blast",
+        "deskripsi": "Leaf blast is caused by the fungus (Pyricularia oryzae) and is one of the main diseases in rice. Symptoms start as small diamond-shaped spots with gray or white centers and brown edges. Severe attacks can cause leaves to dry out and die. The disease spreads rapidly during the rainy season with high humidity and warm temperatures. Control is done by using blast-resistant varieties, maintaining ideal planting spacing, and reducing excessive nitrogen fertilization which encourages pathogen growth."
+    },
+    "leaf_scald": {
+        "nama": "Leaf Scald",
+        "deskripsi": "Leaf scald is caused by the fungus (Microdochium oryzae) and attacks the middle part of the leaf. Symptoms appear as elongated grayish spots with brown edges that extend parallel to the leaf veins. Under wet and high humidity conditions, the disease develops rapidly and can reduce photosynthesis efficiency. The disease spreads through spores carried by wind and water. Prevention involves routine monitoring, good drainage, and fungicide application if necessary."
+    },
+    "narrow_brown_spot": {
+        "nama": "Narrow Brown Spot",
+        "deskripsi": "Narrow brown spot is caused by the fungus (Cercospora oryzae). Symptoms appear as narrow, dark brown spots that elongate following the leaf vein direction. These spots often reduce photosynthesis ability, especially when they attack the flag leaf. The disease develops rapidly in fields with poor sunlight and drainage. Prevention is done through planting resistant varieties, crop rotation, and appropriate fertilization to strengthen plant resistance."
+    }
 }

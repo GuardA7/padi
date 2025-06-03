@@ -31,7 +31,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
     return [
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.book_online),
-        title: tr('penyakit'),
+        title: tr('data_penyakit'),
         activeColorPrimary: const Color(0xFF4CAF50),
         activeColorSecondary: const Color(0xFF4CAF50),
         inactiveColorPrimary: Colors.grey,

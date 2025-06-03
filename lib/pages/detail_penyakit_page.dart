@@ -27,7 +27,6 @@ class DetailPenyakitPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Gambar dengan rounded dan shadow
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
@@ -50,8 +49,6 @@ class DetailPenyakitPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-
-            // Judul besar
             Text(
               nama,
               style: const TextStyle(
@@ -61,8 +58,6 @@ class DetailPenyakitPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-
-            // Deskripsi dalam card lembut
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
