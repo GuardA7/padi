@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'preview_page.dart';
@@ -25,7 +26,6 @@ class _ScannerPageState extends State<ScannerPage> {
     super.initState();
     _initCamera();
 
-    // Fullscreen
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   }
 
@@ -74,10 +74,35 @@ class _ScannerPageState extends State<ScannerPage> {
     }
   }
 
+  Future<void> _pickImageFromGallery() async {
+    try {
+      final ImagePicker picker = ImagePicker();
+      final XFile? pickedFile = await picker.pickImage(
+        source: ImageSource.gallery,
+      );
+
+      if (pickedFile != null) {
+        setState(() {
+          _lastImagePath = pickedFile.path;
+        });
+
+        if (mounted) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => PreviewPage(imagePath: pickedFile.path),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      debugPrint('Gagal memilih gambar dari galeri: $e');
+    }
+  }
+
   @override
   void dispose() {
     _controller?.dispose();
-    // Kembalikan status bar
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     super.dispose();
   }
@@ -95,7 +120,7 @@ class _ScannerPageState extends State<ScannerPage> {
                 children: [
                   CameraPreview(_controller!),
 
-                  // Tombol kembali (pojok kiri atas)
+                  // Tombol kembali
                   Positioned(
                     top: 50,
                     left: 16,
@@ -109,7 +134,7 @@ class _ScannerPageState extends State<ScannerPage> {
                     ),
                   ),
 
-                  // Tombol bawah
+                  // Kontrol di bagian bawah
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
@@ -119,47 +144,28 @@ class _ScannerPageState extends State<ScannerPage> {
                       ),
                       color: Colors.black.withOpacity(0.5),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          // Thumbnail gambar terakhir
-                          GestureDetector(
-                            onTap: () {
-                              if (_lastImagePath != null) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder:
-                                        (_) => PreviewPage(
-                                          imagePath: _lastImagePath!,
-                                        ),
-                                  ),
-                                );
-                              }
-                            },
-                            child:
-                                _lastImagePath != null
-                                    ? ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: Image.file(
-                                        File(_lastImagePath!),
-                                        width: 40,
-                                        height: 40,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    )
-                                    : const Icon(
-                                      Icons.photo,
-                                      color: Colors.white70,
-                                      size: 32,
-                                    ),
+                          // Ambil dari galeri
+                          ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                            onPressed: _pickImageFromGallery,
+                            icon: const Icon(Icons.photo_library),
+                            label: Text('galeri'.tr()),
                           ),
 
-                          // Tombol shutter tengah
+                          // Tombol kamera
                           GestureDetector(
                             onTap: _takePicture,
                             child: Container(
-                              width: 80,
-                              height: 80,
+                              width: 70,
+                              height: 70,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(
@@ -176,9 +182,6 @@ class _ScannerPageState extends State<ScannerPage> {
                               ),
                             ),
                           ),
-
-                          // Spacer kanan
-                          const SizedBox(width: 40),
                         ],
                       ),
                     ),

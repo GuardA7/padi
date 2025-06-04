@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:tubes/dialog/delete.dart';
 import '../services/scan_history_service.dart';
 import '../models/scan_history.dart';
-import '../widgets/history_list.dart'; // import widget baru
+import '../widgets/history_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,8 +30,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _deleteHistoryItem(ScanHistory item) async {
-    await ScanHistoryService.deleteHistory(item);
-    await _loadHistory(); // reload data setelah hapus
+    // Panggil dialog konfirmasi dari file terpisah
+    final confirm = await showConfirmDeleteDialog(context);
+    if (confirm == true) {
+      await ScanHistoryService.deleteHistory(item);
+      await _loadHistory();
+    }
   }
 
   @override
@@ -95,7 +100,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 12),
-              // Panggil widget HistoryList dan kirim callback untuk hapus
               HistoryList(history: _history, onDelete: _deleteHistoryItem),
             ],
           ),

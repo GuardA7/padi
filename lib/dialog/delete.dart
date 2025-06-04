@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
-import '../models/scan_history.dart';
-import '../services/scan_history_service.dart';
+import 'package:easy_localization/easy_localization.dart';
 
-Future<bool?> showDeleteHistoryDialog(
-  BuildContext context,
-  ScanHistory item,
-  VoidCallback onDeleted,
-) {
+/// Menampilkan dialog konfirmasi hapus.
+///
+/// Mengembalikan `true` jika pengguna menekan tombol "hapus",
+/// `false` atau `null` jika batal.
+Future<bool?> showConfirmDeleteDialog(BuildContext context) {
   return showDialog<bool>(
     context: context,
-    builder:
-        (context) => AlertDialog(
-          title: const Text('Hapus Riwayat'),
-          content: const Text('Apakah Anda yakin ingin menghapus riwayat ini?'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: const Text('Batal'),
+    builder: (context) {
+      return AlertDialog(
+        title: Text('konfirmasi_hapus'.tr()),
+        content: Text('yakin_hapus_item_ini'.tr()),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text('batal'.tr()),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text(
+              'hapus'.tr(),
+              style: const TextStyle(color: Colors.red),
             ),
-            TextButton(
-              onPressed: () async {
-                await ScanHistoryService.deleteHistory(item);
-                onDeleted();
-                Navigator.of(context).pop(true);
-              },
-              child: const Text('Hapus', style: TextStyle(color: Colors.red)),
-            ),
-          ],
-        ),
+          ),
+        ],
+      );
+    },
   );
 }

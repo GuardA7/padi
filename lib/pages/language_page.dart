@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:tubes/widgets/custom_bottom_nav.dart';
 
 class LanguagePage extends StatelessWidget {
   const LanguagePage({super.key});
@@ -59,10 +60,19 @@ class LanguageItem extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () async {
+                  // 1. Simpan locale baru terlebih dahulu
                   await context.setLocale(locale);
-                  Navigator.pop(context); // ✅ hanya menutup dialog
+
+                  // 2. Tampilkan snackbar feedback
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('berhasil_diubah'.tr())),
+                  );
+
+                  // 3. Force rebuild seluruh widget tree
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (_) => const CustomBottomNav()),
+                    (route) => false,
                   );
                 },
                 child: Text('ya'.tr()),
